@@ -1,0 +1,374 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+:root {
+  --primary-color: #047aed;
+  --secondary-color: #1c3fa8;
+  --dark-color: #002240;
+  --light-color: #f4f4f4;
+  --success-color:#5cb85c;
+  --error-color:#d9534f;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "lato", sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  text-decoration: none;
+  color: #333;
+}
+
+h1,
+h2 {
+  font-weight: 300;
+  line-height: 1.2;
+  margin: 10px 0;
+}
+
+p {
+  margin: 10px 0;
+}
+
+img {
+  width: 100%;
+}
+
+code, pre{
+  background:#333;
+  color: #fff;
+  padding: 10px;
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--primary-color);
+  color: #fff;
+  height: 70px;
+}
+
+.navbar ul {
+  display: flex;
+}
+
+.navbar a {
+  color: #fff;
+  padding: 10px;
+  margin: 0 5px;
+}
+
+.navbar a:hover {
+  border-bottom: 2px solid #fff;
+}
+.navbar .flex {
+  justify-content: space-between;
+}
+
+/* Showcase */
+.showcase {
+  height: 400px;
+  background-color: var(--primary-color);
+  color: #fff;
+  position: relative;
+}
+
+.showcase h1 {
+  font-size: 40px;
+}
+
+.showcase p {
+  margin: 20px 0;
+}
+
+.showcase .grid {
+  /* This removes the scrollbar and makes the overflow visible */
+  overflow: visible;
+  grid-template-columns: 55% 45%;
+  gap: 30px;
+}
+
+.showcase-form {
+  position: relative;
+  top: 60px;
+  height: 350px;
+  width: 400px;
+  padding: 40px;
+  z-index: 100; /*To make sure it is always in front*/
+  justify-self: flex-end;
+  animation: slideInFromRight 1s ease-in;
+}
+
+.showcase-text{
+  animation: slideInFromLeft 1s ease-in;
+}
+
+.showcase-form .form-control {
+  margin-top: 50px;
+}
+
+.showcase-form input[type="text"],
+.showcase-form input[type="email"] {
+  border: 0;
+  border-bottom: 1px solid #b4becb;
+  width: 100%;
+  margin: 10px 0;
+  font-size: 16px;
+  padding-bottom: 10px;
+}
+
+/* when the input is in its focus state, we remove the border around it */
+.showcase-form input:focus {
+  outline: none;
+}
+
+/* TO create slant, instead of creating a new element, just do this */
+.showcase::before,
+.showcase::after {
+  content: "";
+  position: absolute; /*position of the parent container has to be relative for it to work*/
+  height: 100px;
+  bottom: -70px; /*Takes it to the bottom since that is where I want the slant*/
+  left: 0;
+  background-color: #fff;
+  width: 100%;
+  transform: skewY(-3deg);
+  -webkit-transform: skewY(-3deg); /*For chrome*/
+  -moz-transform: skewY(-3deg); /*For mozilla*/
+  -ms-transform: skewY(-3deg);
+}
+
+/* Stats */
+.stats {
+  padding-top: 100px;
+  display: flex; /* Activate flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  flex-direction: column;
+  animation: animation: slideInFromBottom 1s ease-in;;
+}
+
+.stats-heading {
+  max-width: 500px;
+  margin: auto;
+}
+
+.stats .grid h3 {
+  font-size: 35px;
+}
+
+.stats .grid p {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* CLI */
+.cli .grid {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+.cli .grid > *:first-child {
+  /*you can also use .cli .grid > img in place of this*/
+  grid-column: 1 / span 2; /*We want it 2 go from 1 and span across to 2*/
+  grid-row: 1 / span 2; /*Makes it span across 2 rows*/
+}
+
+/* Cloud */
+.cloud .grid {
+  grid-template-columns: 4fr 3fr;
+}
+
+/* Languages */
+
+.languages .card {
+  text-align: center;
+  margin: 18px 10px 40px;
+  transition: transform 0.2s ease;
+}
+
+.languages .card h4 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.languages .card:hover {
+  transform: translateY(-15px); /*Negative moves it up*/
+}
+
+/* Features */
+.features-head img {
+  /* reduce size of the image */
+  width: 200px;
+  justify-self: flex-end; /* To push img to the end */
+  border-radius: 900px; /*To make img circular*/
+  border: 2px #fff solid;
+}
+
+.features-sub-head img {
+  width: 300px;
+  justify-self: flex-end;
+  border-radius: 900px;
+  border: 2px var(--primary-color) solid;
+}
+
+.feature-main .card > i {
+  margin-right: 20px;
+}
+
+.feature-main .grid {
+  padding: 30px;
+}
+
+.feature-main .grid > * {
+  grid-column: 1 / span 3;
+}
+
+.feature-main .grid > *:first-child {
+  grid-column: 1 / span 3 !important; /* Forcing the rule */
+}
+
+/* Docs */
+.docs-head img {
+  /* reduce size of the image */
+  width: 200px;
+  justify-self: flex-end; /* To push img to the end */
+}
+
+docs-main h3 {
+  margin: 20px 0;
+}
+
+.docs-main .grid {
+  grid-template-columns: 1fr 2fr; /*make the second grid wider*/
+  align-items: flex-start;
+}
+
+.docs-main nav li {
+  font-size: 17px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px #ccc solid;
+}
+
+.docs-main a{
+  text-decoration: none;
+  color: #333;
+}
+
+.docs-main a:hover{
+  font-weight: bold;
+  
+}
+
+.docs-main>.card {
+  background-color: var(--primary-color);
+}
+
+/* Footer */
+.footer .social a {
+  margin: 0 10px; /*Space between social links*/
+}
+
+/* Animations */
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Tablets and under */
+
+@media (max-width: 768px) {
+  .grid,
+  .showcase .grid,
+  .stats .grid,
+  .cli .grid,
+  .cloud .grid, .feature-main .grid, .docs-main .grid{
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+
+
+
+  .showcase {
+    height: auto; /*Takes up the size of the container*/
+  }
+
+  .showcase-text {
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .showcase-form {
+    /* to centralize the form and to put item in the middle */
+    justify-self: center;
+    margin: auto;
+  }
+
+  .cli .grid > *:first-child {
+    /*you can also use .cli .grid > img in place of this*/
+    grid-column: 1; /*take only one row*/
+    grid-row: 1; /*Takes only one row*/
+  }
+
+  .navbar ul {
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .languages .flex {
+    flex-wrap: wrap;
+  }
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+  .navbar {
+    height: 110px;
+  }
+
+  .navbar .flex {
+    /* Makes the flex to be in a column */
+    flex-direction: column;
+  }
+}
